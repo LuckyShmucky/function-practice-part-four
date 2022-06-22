@@ -60,29 +60,32 @@ def pascal(n):
         # here I am creating the amount of rows based on the input (if input is 4 there should be 4 rows)
         while n > len(triangle_rows):
             # print(n)
-            next_row = []
-            triangle_rows.append(next_row)
+            new_row = []
+            triangle_rows.append(new_row)
 
             --n
 # in this foor loop I am trying to create place holders for each index that a row should have
 # the index equals the indices in the triangle rows list
         for index_of_row in range(2, n):
             # print(index_of_row)
+            # print(index_of_row)
             current_row = triangle_rows[index_of_row]
+            current_row.extend([1] * (index_of_row + 1))
 # using one as a place holder just to create indices to have something to compare to previous row
 # because we know that every row has the same number as the row number itself (row five has five indices)
 # has to add one because we start counting rows at 0
-            current_row.extend([1] * (index_of_row + 1))
             prev_row = triangle_rows[index_of_row-1]
             # print(prev_row, 'prev row')
             for item_in_row in current_row[1:-1]:
-                current_row[item_in_row] = prev_row[item_in_row -1] + prev_row[item_in_row]
+                current_row[item_in_row] = prev_row[item_in_row -
+                                                    1] + prev_row[item_in_row]
                 print(item_in_row, index_of_row)
 
-    print(triangle_rows)
+    for row in triangle_rows:
+        print(row)
 
 
-pascal(5)
+pascal(4)
 # for index in range(3, n+1):
 #     print(index)
 #     row_content = []
