@@ -69,15 +69,22 @@ def pascal(n):
         for index_of_row in range(2, n):
             # print(index_of_row)
             current_row = triangle_rows[index_of_row]
+
 # using one as a place holder just to create indices to have something to compare to previous row
 # because we know that every row has the same number as the row number itself (row five has five indices)
 # has to add one because we start counting rows at 0
-            current_row.extend([1] * (index_of_row + 1))
             prev_row = triangle_rows[index_of_row-1]
+            current_row.extend([1] * (index_of_row + 1))
             # print(prev_row, 'prev row')
-            for item_in_row in current_row[1:-1]:
-                current_row[item_in_row] = prev_row[item_in_row -1] + prev_row[item_in_row]
-                print(item_in_row, index_of_row)
+            for item_in_row in current_row:
+                if prev_row[item_in_row - 1] == False or prev_row[item_in_row] == False:
+                    current_row.append(1)
+                    print(current_row)
+                else:
+                    current_row.append(
+                        prev_row[item_in_row - 1] + prev_row[item_in_row])
+                    print(current_row)
+                # print(current_row[item_in_row], index_of_row)
 
     print(triangle_rows)
 
